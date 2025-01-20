@@ -26,9 +26,9 @@ def parse_args(parse=True, **optional_kwargs):
     parser.add_argument('--nv', default=4, type=int)
     parser.add_argument('--nh', default=16, type=int)
     parser.add_argument('--reg_weight', default=1e-4, type=float)
-    parser.add_argument('--lmd', default=0.1, type=float)
-    parser.add_argument('--tau', default=1, type=float)
-    parser.add_argument('--sim', default='dot', type=str)
+
+    parser.add_argument('--lmb', default=1e-4, type=float)
+    parser.add_argument('--alpha', default=0.7, type=float)
 
     parser.add_argument('--model_idx', default='ablation', type=str)
     parser.add_argument("--model_name", default='SASRec', type=str)

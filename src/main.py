@@ -2,7 +2,7 @@ import torch
 import numpy as np
 from trainers import Trainer
 from param import parse_args
-from models import SASRecModel, GRU4Rec, Caser, FMLP, SRGNN, CL4SRec
+from models import SASRecModel, GRU4Rec, Caser, FMLP, SRGNN
 from datasets import get_loader
 from utils import EarlyStopping, get_user_seqs, check_path, set_seed, log_write
 
@@ -22,8 +22,6 @@ def get_models(args):
         model = SRGNN
     elif args.model_name.lower() == 'fmlp':
         model = FMLP
-    elif args.model_name.lower() == 'cl4rec':
-        model = CL4SRec
     else:
         model = SASRecModel
 

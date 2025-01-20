@@ -1,1 +1,1 @@
-# DSSRec
+# IDEALRec

@@ -52,7 +52,7 @@ def parse_args(parse=True, **optional_kwargs):
     else:
         args = parser.parse_known_args()[0]
 
-    args.output_dir = os.path.join(args.output_dir, args.model_name, args.data_name)
+    args.output_dir = os.path.join(args.output_dir, args.model_name)
 
     args.data_file = args.data_dir + args.data_name + '.txt'
     args.visual_file = args.data_dir + args.data_name + '.pt'

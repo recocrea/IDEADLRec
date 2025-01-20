@@ -65,7 +65,7 @@ class SASRecModel(IDEALRec):
             torch.log(1 - torch.sigmoid(neg_logits) + 1e-24) * istarget
         ) / torch.sum(istarget)
 
-        final_loss = bpr_loss + 0.7 * self.con_loss
+        final_loss = bpr_loss + self.args.alpha * self.crm_loss
         return final_loss
 
     def predict_full(self, batch):

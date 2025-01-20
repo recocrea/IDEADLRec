@@ -31,7 +31,7 @@ class IDEALRec(nn.Module):
         self.dropout = nn.Dropout(args.dropout_prob)
         self.layernorm = LayerNorm(args.hidden_size, eps=args.eps)
         self.args = args
-        self.con_loss = 0
+        self.crm_loss = 0
 
     def load_feat_embeddings(self):
         self.feat_embeddings.weight.data = load_tensor(self.args.visual_file)
@@ -63,11 +63,11 @@ class IDEALRec(nn.Module):
         mask = self.get_attention_mask(item_seq)
         feat_emb = self.project(self.feat_embeddings(item_seq))
         if self.args.use_contrastive:
-            self.con_loss = self.contrastive_loss(item_seq, feat_emb)
+            self.crm_loss = self.CRM_loss(item_seq, feat_emb)
         fusion_emb = self.fuse_model(item_emb, feat_emb, mask)
         return fusion_emb
 
-    def contrastive_loss(self, input_ids, emb):
+    def CRM_loss(self, input_ids, emb):
         B, N, D = emb.shape
         mask = input_ids != 0
         mask_expanded = mask.unsqueeze(-1).float()

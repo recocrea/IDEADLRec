@@ -41,7 +41,7 @@ class GRU4Rec(IDEALRec):
         return seq_out
 
     def calculate_loss(self, batch):
-        user_id, item_seq, pos, neg, answer = batch
+        user_id, item_seq, item_seq_len, pos, neg, answer = batch
         seq_out = self.forward(item_seq)
 
         seq_emb = seq_out.view(-1, self.args.hidden_size)
@@ -57,7 +57,7 @@ class GRU4Rec(IDEALRec):
             torch.log(1 - torch.sigmoid(neg_logits) + 1e-24) * istarget
         ) / torch.sum(istarget)
 
-        final_loss = bpr_loss + 0.7 * self.con_loss
+        final_loss = bpr_loss + self.args.alpha * self.crm_loss
         return final_loss
 
     def predict_full(self, batch):

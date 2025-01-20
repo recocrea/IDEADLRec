@@ -103,7 +103,7 @@ class SRGNN(IDEALRec):
         labels = answer.squeeze(1)
         logits = torch.matmul(seq_out, self.item_embeddings.weight.transpose(0, 1))
         ce_loss = self.loss_fct(logits, labels)
-        loss = ce_loss + 0.7 * self.con_loss
+        loss = ce_loss + self.args.alpha * self.crm_loss
         return loss
 
     def predict_full(self, batch):

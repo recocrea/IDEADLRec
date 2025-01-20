@@ -122,7 +122,7 @@ class Caser(IDEALRec):
                 self.fc2.weight,
             ]
         )
-        loss = ce_loss + self.reg_weight * reg_loss + self.reg_loss_conv_h() + 0.7*self.con_loss
+        loss = ce_loss + self.reg_weight * reg_loss + self.reg_loss_conv_h() + self.args.alpha * self.crm_loss
         return loss
 
     def predict_full(self, batch):
@@ -131,5 +131,3 @@ class Caser(IDEALRec):
         test_item_emb = self.item_embeddings.weight
         rating_pred = torch.matmul(seq_out, test_item_emb.transpose(0, 1))
         return rating_pred
-
-

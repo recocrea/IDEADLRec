@@ -2,7 +2,7 @@ import copy
 import torch
 import torch.nn as nn
 from .layers import SelfAttentionLayer, LayerNorm
-from .abstract import IDEALRec
+from .abstract import CAFM
 
 
 class Encoder(nn.Module):
@@ -18,7 +18,7 @@ class Encoder(nn.Module):
             hidden_states = layer_module(hidden_states, attention_mask)
         return hidden_states
 
-class SASRecModel(IDEALRec):
+class SASRecModel(CAFM):
     def __init__(self, args):
         super(SASRecModel, self).__init__(args)
         self.model = Encoder(args)

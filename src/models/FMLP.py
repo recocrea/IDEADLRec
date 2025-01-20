@@ -1,7 +1,7 @@
 import copy
 import torch
 import torch.nn as nn
-from .abstract import IDEALRec
+from .abstract import CAFM
 from .layers import FMLPLayer, LayerNorm
 
 class FMLPEncoder(nn.Module):
@@ -17,7 +17,7 @@ class FMLPEncoder(nn.Module):
             hidden_states = layer_module(hidden_states)
         return hidden_states
 
-class FMLP(IDEALRec):
+class FMLP(CAFM):
     def __init__(self, args):
         super(FMLP, self).__init__(args)
         self.item_embeddings = nn.Embedding(args.item_size, args.hidden_size, padding_idx=0)

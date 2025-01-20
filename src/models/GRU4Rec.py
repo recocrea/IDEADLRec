@@ -1,9 +1,9 @@
 import torch
 from torch import nn
 from torch.nn.init import xavier_uniform_, xavier_normal_
-from .abstract import IDEALRec
+from .abstract import CAFM
 
-class GRU4Rec(IDEALRec):
+class GRU4Rec(CAFM):
     def __init__(self, args):
         super(GRU4Rec, self).__init__(args)
         self.num_layers = args.num_layers

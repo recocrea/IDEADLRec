@@ -1,11 +1,11 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from .abstract import IDEALRec
+from .abstract import CAFM
 from .loss import RegLoss
 from torch.nn.init import normal_, xavier_normal_, constant_
 
-class Caser(IDEALRec):
+class Caser(CAFM):
     def __init__(self, args):
         super(Caser, self).__init__(args)
 

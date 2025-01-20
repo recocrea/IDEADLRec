@@ -3,9 +3,9 @@ import numpy as np
 import torch
 from torch import nn
 from .layers import GNN
-from .abstract import IDEALRec
+from .abstract import CAFM
 
-class SRGNN(IDEALRec):
+class SRGNN(CAFM):
     def __init__(self, args):
         super(SRGNN, self).__init__(args)
 

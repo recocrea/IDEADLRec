@@ -21,9 +21,9 @@ class Project(nn.Module):
         hidden_states = self.dense_2(hidden_states)
         return hidden_states
 
-class IDEALRec(nn.Module):
+class CAFM(nn.Module):
     def __init__(self, args):
-        super(IDEALRec, self).__init__()
+        super(CAFM, self).__init__()
         self.feat_embeddings = nn.Embedding(args.item_size, args.visual_size, padding_idx=0)
         self.position_embeddings = nn.Embedding(args.max_seq_length, args.hidden_size)
         self.project = Project(args)

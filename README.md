@@ -10,6 +10,7 @@ Model architecture:
 ## Requirements
 
 Python >= 3.7
+
 tqdm == 4.26.0
 
 ## Datasets

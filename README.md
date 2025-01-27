@@ -21,7 +21,7 @@ Four prepared datasets are included in `data` folder.
 To train IDEALRec on `Beauty` dataset, change to the `src` folder and run following command: 
 
 ```
-bash beauty.sh
+bash run.sh
 ```
 You can train IDEALRec on other datasets in a similar way.
 
